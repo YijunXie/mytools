@@ -22,17 +22,17 @@ devtools::install_github("YijunXie/mytools")
 ```
 
 ### Quick demo
-` Calculate coefficient of tail independence
+- Calculate coefficient of tail independence
 ```{r}
 chi.bar(rnorm(1000),q = 0.95, n = 1, conf = 0.95)
 ```
 
-` Find tail index
+- Find tail index
 ```{r}
 lrtest(c(rep(0,93),rep(1,7)),0.05)  
 ```
 
-` Result of piecewise linear scoring function
+- Result of piecewise linear scoring function
 ```{r}
 pwls(0.09,0.05,0.95)
 ```
