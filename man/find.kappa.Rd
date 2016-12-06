@@ -18,7 +18,7 @@ find.kappa(l1, l2, precision = 0.01, inov = "norm", df = 1)
 \item{df}{degree of freedom if the innovation is Student's t}
 }
 \value{
-numerical
+numerical value of kappa
 }
 \description{
 function for find coefficient of tail of GARCH process

@@ -12,7 +12,7 @@ lrtest(dat, p)
 \item{p}{hypothesis probability}
 }
 \value{
-list
+list of test statistic and p-value
 }
 \description{
 Given a vector of 0s and 1s indicate failure and success,

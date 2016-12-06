@@ -8,7 +8,7 @@
 #' @param n discarded number
 #' @param conf confidence level
 #'
-#' @return vector
+#' @return vector of the estimated value and confidence interval
 #' @export
 #' @examples
 #'#' chi.bar(rnorm(1000),q = 0.9,n = 1)

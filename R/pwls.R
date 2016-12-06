@@ -4,7 +4,7 @@
 #' @param t true value
 #' @param q quantile level
 #'
-#' @return numerical
+#' @return numerical value of the score
 #' @export
 #' @examples
 #'#' pwls(0.1,0.05,0.95)

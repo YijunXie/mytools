@@ -14,7 +14,7 @@ pwls(x, t, q)
 \item{q}{quantile level}
 }
 \value{
-numerical
+numerical value of the score
 }
 \description{
 Piecewise linear scroing function

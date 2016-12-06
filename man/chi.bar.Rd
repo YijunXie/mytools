@@ -16,7 +16,7 @@ chi.bar(dat, q = 0.95, n = 1, conf = 0.95)
 \item{conf}{confidence level}
 }
 \value{
-vector
+vector of the estimated value and confidence interval
 }
 \description{
 Find the tail index chibar

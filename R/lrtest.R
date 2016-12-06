@@ -10,7 +10,7 @@
 #' @param dat list of values being tested
 #' @param p hypothesis probability
 #'
-#' @return list
+#' @return list of test statistic and p-value
 #' @export
 #' @examples
 #'#' lrtest(rnorm(100),0.01)

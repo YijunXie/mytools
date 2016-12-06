@@ -7,7 +7,7 @@
 #' @param inov innovation distribution of GARCH process
 #' @param df degree of freedom if the innovation is Student's t
 #'
-#' @return numerical
+#' @return numerical value of kappa
 #' @export
 #' @examples
 #'#' find.kappa(0.1,0.85,precision = 0.001,inov = "norm"),
