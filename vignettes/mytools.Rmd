@@ -1,0 +1,39 @@
+---
+title: "My Tools Collection"
+author: "Yijun Xie"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    keep_md: true
+vignette: >
+  %\VignetteIndexEntry{My Tools Collection}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+### This is a collection of my commonly used functions.
+
+This package includes 4 functions:
+
+## chi.bar()
+This is a function to calculate the coefficient of tail independence. It will return the estimated value as well as the confidence interval of the estimated coefficient of tail independence.
+An example can be find here:
+```{r}
+chi.bar(rnorm(1000),q = 0.95, n = 1, conf = 0.95)
+```
+
+## lrtest()
+This is a function for loglikelihood ratio test of proportion. The returned value would be a list including the test statistic and p-value. An example that test the proportion of 0's to be 95\% or not:
+```{r}
+lrtest(c(rep(0,93),rep(1,7)),0.05)  
+```
+
+## pwls()
+`pwls()` is a function to calculate the value of a special case of scoring function. It will penalize more for the underestimation than overestimation.
+```{r}
+pwls(0.09,0.05,0.95)
+pwls(0.01,0.05,0.95)
+```
+Although the difference between 0.09 and 0.05 is the same as that between 0.01 and 0.05, the score for the first is smaller than the score of the second.
+
