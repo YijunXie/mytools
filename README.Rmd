@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-** Note: This package is still under construction. More functions will be added later.**
+* Note: This package is still under construction. More functions will be added later.*
 
 ## `mytools` is a collection of my own functions.
 
