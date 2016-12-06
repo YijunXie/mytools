@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 ### Installation
 ```{r installation, eval = FALSE}
 devtools::install_github("YijunXie/mytools")
+library(mytools)
 ```
 
 ### Quick demo
