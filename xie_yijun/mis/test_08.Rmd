@@ -1,0 +1,75 @@
+---
+title: "test_08"
+author: "XieYijun"
+date: "October 13, 2016"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(forcats)
+library(gapminder)
+```
+
+```{r}
+# locate gapminder
+gap_fl = system.file("gapminder.tsv",package = "gapminder")
+
+# read file
+gapminder = read_tsv(gap_fl)
+```
+
+```{r}
+gapminder = gapminder %>% 
+  mutate(country = factor(country),
+         continent = factor(continent))
+
+## ungroup
+gap_life_exp = gapminder %>% 
+  group_by(country,continent) %>% 
+  summarise(life_exp = max(lifeExp)) %>% 
+  ungroup()
+
+write_csv(gap_life_exp,"gap_life_exp.csv")
+write_csv(gap_life_exp,"gap_life_exp_ugle.csv",
+          quote  = F, row.names = F)
+
+
+levels(gap_life_exp$country) %>%  head()
+
+temp = fct_reorder(gap_life_exp$country, gap_life_exp$life_exp)
+levels(temp) %>% head()
+
+gap_life_exp =  gap_life_exp %>% 
+  mutate(country = fct_reorder(country,life_exp))
+
+levels(gap_life_exp$country) %>% head()
+
+saveRDS(gap_life_exp,"gap_life_exp.rds")
+rm(gap_life_exp)
+```
+
+```{r}
+## read rds
+gap_life_exp= readRDS("gap_life_exp.rds")
+
+## dput() dget()
+
+dput(gap_life_exp, "gap_life_exp-dput.txt")
+rm(gap_life_exp)
+
+gap_life_exp = dget("gap_life_exp-dput.txt")
+levels(gap_life_exp$country) %>% head()
+
+fit = lm(lifeExp~year, gapminder)
+dput(fit,"gap_fit.txt")
+rm(fit)
+fit = dget("gap_fit.txt")
+
+
+```
+

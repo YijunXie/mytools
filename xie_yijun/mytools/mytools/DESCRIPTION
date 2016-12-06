@@ -1,0 +1,18 @@
+Package: mytools
+Title: Daily used functions for Yijun Xie
+Version: 0.0.0.9000
+Authors@R: person("Yijun", "Xie", email = "theyjxie@gmail.com", 
+		role = c("aut", "cre"))
+Description: This is a collection of functions that I use often when doing
+	my theis project.
+Depends:
+    R (>= 3.3.1), matrixStats
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 5.0.1
+Imports: stats, graphics
+Suggests: testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

@@ -1,0 +1,54 @@
+---
+title: "test_03_ggplot2"
+author: "XieYijun"
+date: "September 27, 2016"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+```
+
+
+scatter plots
+```{r}
+ggplot(gapminder,mapping = aes(x = gdpPercap, y = lifeExp))  ## will not plot anything
+
+p = ggplot(gapminder,mapping = aes(x = gdpPercap, y = lifeExp))
+p + geom_point() # add points
+
+ggplot(gapminder,mapping = aes(x = log(gdpPercap), y = lifeExp))+geom_point()
+
+# X-axis
+p = ggplot(gapminder,mapping = aes(x = gdpPercap, y = lifeExp)) + 
+  scale_x_log10() 
+
+p + geom_point(aes(color = continent)) ## mapping an aesthetic
+p + geom_point(aes(color = continent),alpha = 1/3, size = 3) ## setting an aesthetic
+
+# add a fitted line
+p + geom_point(aes(color = continent)) + 
+  geom_smooth(se = F)
+
+p + geom_point(aes(color = continent)) + 
+  geom_smooth(method = 'lm', se = F)
+
+p + geom_point(aes(color = continent)) + 
+  facet_wrap(~continent)
+
+p + geom_point(aes(color = continent)) + 
+  facet_wrap(~continent) + 
+  geom_smooth(method = 'lm')
+
+p + geom_point(aes(color = continent)) + 
+  facet_wrap(year~continent)
+
+p + geom_point(aes(color = continent)) + 
+  facet_grid(~continent)
+```
+

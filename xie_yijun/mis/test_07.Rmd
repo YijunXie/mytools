@@ -1,0 +1,39 @@
+---
+title: "test_07"
+author: "XieYijun"
+date: "October 11, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(forcats)
+library(gapminder)
+```
+
+```{r}
+# locate gapminder
+gap_fl = system.file("gapminder.tsv",package = "gapminder")
+
+# read file
+gapminder = read_tsv(gap_fl)
+```
+
+```{r}
+dat = gapminder %>% 
+  mutate(country = factor(country),
+         continent = factor(continent))
+
+str(dat)
+```
+
+```{r}
+dat2 = gapminder %>% 
+  group_by(country) %>% 
+  summarise(mle = max(lifeExp))
+```
+

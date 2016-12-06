@@ -1,0 +1,1 @@
+In [this homework](homework_07.md), I explore the dataset about Trump's tweets from last homework.

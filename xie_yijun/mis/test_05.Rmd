@@ -1,0 +1,44 @@
+---
+title: "test_05"
+author: "XieYijun"
+date: "October 4, 2016"
+output: 
+  html_document:
+    css: two_columns.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message = FALSE}
+## loading libraries
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(gapminder)
+```
+<div class="twoC">
+```{r results = 'asis', echo=FALSE} 
+gtbl = gapminder
+tbl1 <- gtbl %>% 
+  group_by(continent) %>% 
+  summarise_each(funs(mean, median), gdpPercap) 
+knitr::kable(tbl1) 
+``` 
+
+```{r echo=FALSE} 
+ggplot(gtbl, aes(x = continent, y = gdpPercap, color = continent)) + geom_point() + ggtitle("GDP per cap by continent") 
+```
+</div>
+<div class="clearer"></div>
+
+
+```{r}
+dat %>% 
+  group_by(country) %>% 
+  select(country, year,lifeExp) %>% 
+  mutate(life_exp_gain = lifeExp - first(lifeExp)) %>% 
+  filter(year < 1963)
+```
+

@@ -1,0 +1,53 @@
+---
+title: "test06"
+author: "XieYijun"
+date: "October 6, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+suppressPackageStartupMessages(library(dplyr))
+library(readr)
+
+superheroes <- "
+    name, alignment, gender,         publisher
+ Magneto,       bad,   male,            Marvel
+   Storm,      good, female,            Marvel
+Mystique,       bad, female,            Marvel
+  Batman,      good,   male,                DC
+   Joker,       bad,   male,                DC
+Catwoman,       bad, female,                DC
+ Hellboy,      good,   male, Dark Horse Comics
+"
+superheroes <- read_csv(superheroes, trim_ws = TRUE, skip = 1)
+
+publishers <- "
+  publisher, yr_founded
+         DC,       1934
+     Marvel,       1939
+      Image,       1992
+"
+publishers <- read_csv(publishers, trim_ws = TRUE, skip = 1)
+
+```
+
+```{r}
+(ijsp <- inner_join(superheroes, publishers))
+
+(sjsp <- semi_join(superheroes, publishers))
+
+(ljsp <- left_join(superheroes, publishers))
+
+(ajsp <- anti_join(superheroes, publishers))
+
+(ijps <- inner_join(publishers, superheroes))
+
+(sjps <- semi_join(x = publishers, y = superheroes))
+```
+
+

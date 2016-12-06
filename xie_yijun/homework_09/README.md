@@ -1,0 +1,1 @@
+In this assignment, I built the package `mytools` which is a collection of my own function. It is quite helpful for me to collect the oftenly used functions together. Since I need to use funcitons from outside packages, I learned both using the `use_package()` function and how to directly `import()` in the old fashioned way.

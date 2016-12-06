@@ -1,0 +1,3 @@
+In this shinyapp, I explore the dataset `gapminder`. I create a web app that allows the users to select the specific year and variable of interest, and then plot a box-plot of that variable in the specific year. It will also provide a summary table with the largest and smallest value of this variable in each continent and which country has the largest or smallest value.
+
+You can access the shinyapp from [shinyapps.io](https://xieyijun.shinyapps.io/homework_08/) or [my own server](http://104.236.170.217:3838/hw_08/)

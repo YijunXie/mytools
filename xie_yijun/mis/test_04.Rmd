@@ -1,0 +1,76 @@
+---
+title: "test_04"
+author: "XieYijun"
+date: "September 29, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(gapminder)
+library(tidyverse)
+
+dat = gapminder
+
+## mutate creates new variables
+dat = dat %>% 
+  mutate(gdp = pop * gdpPercap)
+
+dat = dat %>% 
+  mutate(gdp = NULL)
+
+canada = dat %>% 
+  filter(country == "Canada")
+
+newdat = dat %>% 
+  mutate(canada = rep(canada$gdpPercap,
+                      nlevels(country)),
+         gdpPercapRel = gdpPercap / canada,
+         canada = NULL) %>% 
+  select(gdpPercapRel, everything())
+
+newdat %>% 
+  filter(country == "Canada")
+
+summary(newdat$gdpPercapRel)
+
+## arrange
+newdat %>% 
+  arrange(year, country)
+
+newdat %>% 
+  filter(year == 2007) %>% 
+  arrange(lifeExp)
+
+newdat %>% 
+  filter(year == 2007) %>% 
+  arrange(desc(lifeExp))
+
+## rename
+newdat %>% 
+  rename(life_exp = lifeExp,
+         gdp_percap = gdpPercap,
+         gdp_percap_rel = gdpPercapRel)
+
+
+## group by
+
+newdat %>% 
+  group_by(continent) %>% 
+  summarise(n_obs = n()/12)
+
+newdat %>% 
+  group_by(continent) %>% 
+  tally()
+
+newdat %>% 
+  count(continent)
+
+newdat %>% 
+  group_by(continent) %>% 
+  summarise(n_obs = n(),
+            n_countries = n_distinct(country))
+```

@@ -1,0 +1,125 @@
+---
+title: "explore gpaminder with the tidyverse"
+author: "XieYijun"
+date: "September 20, 2016"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## explore gapminder with the tidyverse
+
+```{r}
+library(tidyverse)
+library(tibble)
+library(gapminder)
+```
+
+# display data
+
+```{r}
+gapminder
+str(gapminder)
+glimpse(gapminder)
+head(gapminder)
+tail(gapminder)
+```
+
+Let's filter to just certain rows. Let's select just certain columns.
+
+```{r}
+(canada = filter(gapminder, country == 'Canada'))
+filter(gapminder, year > 2000)
+filter(gapminder, continent == 'Europe', year == 2007)
+filter(gapminder, country == 'Bulgaria' | country == 'Albania')
+filter(gapminder, country %in% c("Bulgaria","Albania"))
+select(gapminder, year, lifeExp)
+
+select(
+  filter(gapminder, country == 'Canada'), 
+  year, lifeExp)
+
+filter(select(gapminder,year,lifeExp,country),country == 'Canada')
+
+gapminder[grep('Canada', gapminder$country),]
+```
+
+
+Let's use pipeline
+```{r}
+# function(arg1, arg2, arg3,....)
+
+# same as arg1 %>% function(arg2, arg3, ....)
+
+gapminder %>% 
+  filter(country == 'Canada')
+
+gapminder %>% 
+  filter(country == 'Canada') %>% 
+  select(year, lifeExp)
+
+gapminder %>% 
+  select(year, lifeExp, country) %>% 
+  filter(country == "Canada") %>% 
+  select(-country)
+
+y = gapminder %>% 
+  select(starts_with('co'))
+```
+
+
+Look at some funcitons to get to know a data frame
+
+```{r}
+names(gapminder)
+colnames(gapminder)
+ncol(gapminder)
+length(gapminder)
+dim(gapminder)
+nrow(gapminder)
+```
+
+shift from describing the whole object to looking at the variables inside
+
+```{r}
+summary(gapminder)
+gapminder$lifeExp
+gapminder[['gdpPercap']]
+gapminder[c("year","country")]
+```
+
+explore single variable
+
+```{r}
+summary(gapminder$continent)
+table(gapminder$continent)
+class(gapminder$continent)
+levels(gapminder$continent)
+nlevels(gapminder$continent)
+barplot(table(gapminder$continent))
+
+summary(gapminder$lifeExp)
+quantile(gapminder$lifeExp, probs = c(0.3,0.7))
+mean(gapminder$lifeExp);median(gapminder$lifeExp)
+hist(gapminder$lifeExp)
+```
+
+```{r}
+#library("lattice")
+#library("ggplot2")
+
+ggplot(gapminder,mapping =  aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() + geom_smooth(span = 0.8)
+
+gapminder %>% 
+  filter(country == 'Canada') %>% 
+  ggplot(gapminder,mapping =  aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+
+p = ggplot(gapminder, aes(x = gdpPercap, y = lifeExp))
+p + geom_point(aes(color = continent))
+
+```
+

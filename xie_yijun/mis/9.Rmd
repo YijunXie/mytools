@@ -1,0 +1,23 @@
+---
+title: '9'
+author: "XieYijun"
+date: "October 18, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+## save existing parameer settings
+opar = par(pch = 19)
+```
+
+
+
+
+```{r}
+## restore parameter settings
+par(opar)
+```
