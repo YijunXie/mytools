@@ -38,3 +38,5 @@ lrtest(c(rep(0,93),rep(1,7)),0.05)
 pwls(0.09,0.05,0.95)
 #> [1] 0.002
 ```
+
+More details can be found in the vignettes.
