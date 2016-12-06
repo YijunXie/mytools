@@ -1,0 +1,40 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+** Note: This package is still under construction. More functions will be added later.**
+
+## `mytools` is a collection of my own functions.
+
+### Installation
+```{r installation, eval = FALSE}
+devtools::install_github("YijunXie/mytools")
+```
+
+### Quick demo
+` Calculate coefficient of tail independence
+```{r}
+chi.bar(rnorm(1000),q = 0.95, n = 1, conf = 0.95)
+```
+
+` Find tail index
+```{r}
+lrtest(c(rep(0,93),rep(1,7)),0.05)  
+```
+
+` Result of piecewise linear scoring function
+```{r}
+pwls(0.09,0.05,0.95)
+```
+
+
